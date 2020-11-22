@@ -1,0 +1,144 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LaTeX book template                           %%
+%% Author:  Amber Jain (http://amberj.devio.us/) %%
+%% License: ISC license                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper,11pt]{book}
+\usepackage[a4paper,margin=0.7in,footskip=0.3in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumerate}
+\usepackage{float}
+\setlength{\parindent}{0cm}
+\usepackage{titling}
+\usepackage{multirow}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{eurosym}
+\usepackage{pgfgantt}
+\usepackage{gensymb}
+\usepackage{lscape} 
+\usepackage{lscape}
+\usepackage{lmodern,textcomp}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\usepackage{appendix}
+\usepackage{makecell}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{pdfpages}
+\usepackage{subcaption}
+\usepackage{import} 
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+\graphicspath{ {imagenes/} }
+\usepackage{wrapfig}
+\usepackage{array}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{commentgreen}{RGB}{2,112,10}
+\definecolor{stringgreen}{RGB}{2,150,100}
+
+\renewcommand{\appendixname}{Anexos}
+\renewcommand{\appendixtocname}{Anexos}
+\renewcommand{\appendixpagename}{Anexos}
+
+\renewcommand\tablename{Tabla}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+
+\lstset { 
+    language=C++,
+    backgroundcolor=\color{black!5},% set backgroundcolor
+    basicstyle=\footnotesize,		% basic font setting
+    frame=tb, 						% draw a frame at the top and bottom of the code block
+    tabsize=4, 						% tab space width
+    showstringspaces=false, 		% don't mark spaces in strings
+    numbers=left, 					% display line numbers on the left
+    commentstyle=\color{commentgreen}, % comment color
+    keywordstyle=\color{blue}, 		% keyword color
+    stringstyle=\color{stringgreen} % string color
+}
+
+\input{funciones}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Portada
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\pretitle{
+  \begin{center}
+  \LARGE
+  \includegraphics[]{politecnica}\\[\bigskipamount]
+}
+\posttitle{\end{center}}
+
+\title{\Huge \textbf{Titulito}   }
+\author{\textsc{Javier Pina De Paz}}
+\date{08/01/2020} 
+
+\frontmatter
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%DEDICATORIA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{dedication}
+Agradezco el apoyo y cariño que he encontrado siempre en mi familia, mi madre y mi hermana que nunca me han fallado y en quienes siempre puedo encontrar mi hogar. 
+
+
+Me siento afortunado de haber conocido a personas con talento, inteligentes y con buen corazón siendo algunas de ellas ahora mis amigos, gracias por todos los momentos que hemos pasado juntos y los que están por venir.
+
+
+Agradezco la labor, el apoyo y ayuda de mi tutor de quien también he tomado clases y he podido aprender mucho así como estoy agradecido a todos los docentes involucrados en mi formación durante el grado y máster, sin ellos ni todas las personas que forman parte de mi vida, no podría estar donde estoy ni ser quien soy.
+
+\end{dedication}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%RESUMEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+\Huge{\textbf{Resumen}}
+\end{center}
+
+RESUMEN
+
+\textbf{Palabras clave:} Médula, rehabilitación, robot, electroestimulación, prótesis, 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%INDICE AUTOGENERADO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+%\listoftables    "Esto lo que hace es otra pagina despues del índice con las tablas
+
+\mainmatter  %esto no sé qué hace pero lo dejo por si acaso
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%INPUT DE CAPITULOS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{capitulo_introductorio}
+\input{capitulo2_estudio_protesis}
+\input{capitulo3_mejora_HW}
+\input{capitulo4_mejora_SW}
+\input{capitulo5_seleccion_programacion_micro}
+\input{capitulo6_interfaz_grafica}
+\input{capitulo7_tests}
+\input{capitulo8_final}
+%\input{glosario}
+\input{Anexos}
+\input{bibliografía}
+
+
+\end{document}
