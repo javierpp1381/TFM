@@ -15,34 +15,63 @@ $$w\;0\;ap\;30\;\textbackslash r$$
 lo cual significa escribir en el canal cero una amplitud de pulso positiva de 30$mA$.
 \\
 \\
-Estos comandos se reciben como cadenas de caracteres lo que la instrucción anterior consta de diez, incluyendo espacios y el retorno de carro ($\textbackslash r$) para indicar el final de comando. Además, es necesario considerar que cada carácter tiene un tamaño de 1 byte por lo que el comando expuesto ocupa 10 bytes. Esto es importante debido a que los Registros de Datos del USART o UDR del microntrolador tienen un tamaño de 1 byte. Estos registros son los encargados de almacenar los datos que se reciben (registro de recepción) o transmiten (registro de transmisión) a través del puerto serie. En el caso se utiliza el USART1 por lo que sus registros de datos son UDR1 (los registros de transmisión y recepción comparten a misma dirección de entrada/salida o Input/Output. Cuando se escriben datos en UDR1 se almacenan en el registro de transmisión mientras que si se efectúa una lectura de UDR1 se accede al contenido del registro de recepción.) Se aprecia en la figura \ref{fig:USART_datasheet} la descripción del registro de datos del USART según la hoja de datos del ATmega128L.\\
+El estimulador recibe estos comandos como cadenas de caracteres por lo que la instrucción anterior consta de diez, incluyendo espacios y el retorno de carro ($\textbackslash r$) para indicar el final de comando. Además, es necesario considerar que cada carácter tiene un tamaño de 1 byte lo cual significa que el comando expuesto ocupa 10 bytes. Esto es importante debido a que los Registros de Datos del USART o UDR del microntrolador tienen un tamaño de 1 byte. Estos registros son los encargados de almacenar los datos que se reciben (registro de recepción) o transmiten (registro de transmisión) a través del puerto serie. En el caso se utiliza el USART1 por lo que sus registros de datos son UDR1 (los registros de transmisión y recepción comparten a misma dirección de entrada/salida o Input/Output. Cuando se escriben datos en UDR1 se almacenan en el registro de transmisión mientras que si se efectúa una lectura de UDR1 se accede al contenido del registro de recepción.) Se aprecia en la figura \ref{fig:USART_datasheet} la descripción del registro de datos del USART.
+\\
+\\
+Por otra parte, el estimulador eléctrico es capaz de devolver ciertos parámetros cuando se solicitan mediante la instrucción adecuada. Por ejemplo, si se desean conocer los parámetros del canal 0 se envía el comando ``r 0'' a lo que el dispositivo responde con lo siguiente:
+
+\begin{lstlisting}[language=C++,breaklines]
+NewCMD >> r 0
+AP = 35
+AN = 20
+RE = 0
+TP = 300
+TN = 400
+IN = 0
+
+NewCMD >>
+\end{lstlisting}
+
+Esto es similar a lo visto en la figura \ref{fig:coolterm_ejemplo} mostrada en el apartado \ref{firmware} del capítulo \ref{capitulo_2} donde se explica el firmware del estimulador eléctrico.\\
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[scale=0.45]{USART_datasheet}
-  \caption{Descripción del registro de datos asociado al USART del ATmega128L según su hoja de datos.}\label{fig:USART_datasheet}
-\end{figure}
+  \caption{Descripción del registro de datos asociado al USART del ATmega128L\cite{atmega128l_datasheet}.}\label{fig:USART_datasheet}
+\end{figure}  
 
-Analizando la la instrucción anterior que sirve de ejemplo, se observa que la forma de transmitir comandos al electroestimulador está implementada a alto nivel, es decir de cara al usuario que los transmite mediante una terminal y una conexión al puerto serie virtual correspondiente, tal y como se explicó en el capítulo \ref{capitulo_2}. El control de los estimuladores eléctricos en la prótesis híbrida requiere que el microcontrolador que sirve de nodo central efectúe la comunicación con estos dispositivos. Esto implica un control a un nivel más bajo, es decir, el usuario no tendrá contacto directo con estos comandos los cuales serán interpretados por el microcontrolador central para efectuar las correspondientes acciones. Incluso los datos solicitados a los estimuladores en cuanto a sus parámetros serán interpretados por la interfaz gráfica para mostrarlos por pantalla de la forma adecuada. 
+Analizando tanto las instrucciones que recibe el estimulador como los parámetros que devuelve cuando se solicitan, se observa que están implementados a alto nivel, es decir de cara al usuario. Esto se aprecia en la utilización de caracteres, espacios, el símbolo ``='' e incluso saltos de línea para que su manejo sea más amigable en una terminal serie. Ahora bien, el control de los estimuladores eléctricos en la prótesis híbrida requiere que el microcontrolador que sirve de nodo central efectúe la comunicación con estos dispositivos. Esto implica un control a un nivel más bajo, es decir, el usuario no tendrá contacto directo con estos comandos los cuales serán interpretados por el microcontrolador central para efectuar las correspondientes acciones. Incluso los datos solicitados a los estimuladores en cuanto a sus parámetros serán interpretados por la interfaz gráfica para mostrarlos por pantalla de la forma adecuada. 
 \\
 \\
-Se puede ver cómo la implementación de los comandos en alto nivel deja de ser necesaria. Además, ésta presenta la principal desventaja que concierne al tamaño de los paquetes de datos que se transmiten y lo que en última instancia, influye a la velocidad de ajuste de parámetros de estimulación y la eficiencia en la asistencia durante la rehabilitación. Además, si un solo carácter se pierde o altera durante la comunicación, la instrucción completa será erróena.
+Se puede ver cómo la implementación de los comandos y parámetros en alto nivel deja de ser necesaria. Además, ésta presenta la principal desventaja que concierne al tamaño de los paquetes de datos que se transmiten y lo que en última instancia, influye a la velocidad de ajuste de parámetros de estimulación y la eficiencia en la asistencia durante la rehabilitación. Además, si un solo carácter se pierde o altera durante la comunicación, la instrucción completa será erróena.
 \\
 \\
-Por lo tanto, el principal objetivo de mejora del firmware del estimulador es la codificación de instrucciones que recibe el mini TEREFES para que queden a un nivel más bajo y la comunicación sea más eficiente. 
+Por lo tanto, el principal objetivo de mejora del firmware del estimulador es la revisión y codificación de instrucciones que recibe el mini TEREFES así como los parámetros que devuelve tras su solicitud. Con ello se pretende conseguir una comunicación más eficiente y rápida además de añadir nuevas instrucciones que se consideren necesarias si fuera el caso.
 
 
-\section{Codificación de instrucciones del estimulador eléctrico}
-Para la tarea de codificación de instrucciones ha de considerar como factor limitante el tamaño del Registro de Datos del USART UDR1. Esto implica necesariamente trabajar con paquetes de datos de 1 byte ya que el microcontrolador no puede recibir o envíar más bytes de una vez. Cabe la posibilidad de utilizar 9 bits para datos pero esto no es compatible con todos los dispositivos que se puedan conectar con el estimulador, por lo que se mantiene la configuración original.
+\section{Revisión y codificación de instrucciones recibidas por el estimulador eléctrico}
+Para la tarea de codificación de instrucciones se ha de considerar como factor limitante el tamaño del Registro de Datos UDR1 del USART. Esto implica necesariamente trabajar con paquetes de datos de 1 byte ya que el microcontrolador no puede recibir o envíar más bytes de una vez. Cabe la posibilidad de utilizar 9 bits para datos pero esto no es compatible con todos los dispositivos que se puedan conectar con el estimulador, por lo que se mantiene la configuración original.
 \\
 \\
-Antes de entrar en la codificación de instrucciones, se va a mostrar la totalidad de comandos que puede recibir el estimulador eléctrico. Estas instrucciones se muestran en la tabla \ref{tabla:comandos_originales}
+Antes de entrar en la codificación de instrucciones, se va a mostrar la totalidad de comandos que puede recibir el estimulador eléctrico. Se muestran estas instrucciones así como su descripción en la tabla \ref{tabla:comandos_originales}
 
 \begin{table}
   \begin{tabular}{| c | c | c |}
       \hline
       \thead{Instrucción} & \thead{Valor numérico} & \thead{Descripción} \\
       \hline
+	  e fl <valor> & \makecell{valor: [0,3]} & \makecell{Configuración del número de canales.}\\      
+      \hline    
+      e lc <valor 1> <valor 2> &  \makecell{valor 1: [0,3]\\valor 2: [0,3]} & \makecell{Configuración de la lista de turnos \\de los canales. El valor 1 indica el\\ canal y el valor 2 su turno.}\\      
+      \hline    
+      e tg <valor> &  \makecell{valor: [20,100]Hz} & \makecell{Configuración de la frecuencia inter pulso.}\\      
+      \hline  
+      e ti <valor> &  \makecell{valor: [20,100]Hz} & \makecell{Configuración de la frecuencia intra pulso.}\\      
+      \hline  
+      e rm <valor> &  \makecell{valor: [0,3]} & \makecell{Configuración de la repetición máxima.}\\      
+      \hline  
+      e md <valor> &  \makecell{valor: [1,6]} & \makecell{Configuración del modo de funcionamiento.}\\      
+      \hline        
       w <valor 1> ap <valor 2> &  \makecell{valor 1: [0,3]\\valor 2: [0,50]$mA$} & \makecell{Configuración de la amplitud de pulso positivo\\ recogida en el valor 2 para el canal\\ indicado por el valor 1.}  \\
       \hline
       w <valor 1> an <valor 2> &  \makecell{valor 1: [0,3]\\valor 2: [0,50]$mA$} & \makecell{Configuración de amplitud de pulso negativo\\ recogida en el valor 2 para el canal\\ indicado por el valor 1.}  \\
@@ -54,22 +83,10 @@ Antes de entrar en la codificación de instrucciones, se va a mostrar la totalid
       w <valor 1> tn <valor 2> &  \makecell{valor 1: [0,3]\\valor 2: [250,500]$\mu s$} & \makecell{Configuración del ancho de pulso negativo\\ recogido en el valor 2 para el canal\\ indicado por el valor 1.}\\      
       \hline      
       w <valor 1> in <valor 2> &  \makecell{valor 1: [0,3]\\valor 2: [0,1]} & \makecell{Configuración de la inversión \\del canal indicado en valor 1}\\      
-      \hline       
-      e fl <valor> & \makecell{valor: [0,3]} & \makecell{Configuración del número de canales.}\\      
-      \hline    
-      e lc <valor 1> <valor 2> &  \makecell{valor 1: [0,3]\\valor 2: [0,3]} & \makecell{Configuración de la lista de turnos \\de los canales. El valor 1 indica el\\ canal y el valor 2 su turno.}\\      
-      \hline    
-      e tg <valor> &  \makecell{valor: [20,100]Hz} & \makecell{Configuración de la frecuencia inter pulso.}\\      
       \hline  
-      e ti <valor> &  \makecell{valor: [20,100]Hz} & \makecell{Configuración de la frecuencia intra pulso.}\\      
-      \hline  
-      e rm <valor> &  \makecell{valor: [0,3]} & \makecell{Configuración de la repetición máxima.}\\      
-      \hline  
-      e md <valor> &  \makecell{valor: [1,6]} & \makecell{Configuración del modo de funcionamiento.}\\      
-      \hline  
-      fap/fan/ftp/ftn/fre/fin <valores> &  \makecell{valores de ap, an,\\ tp, tn, re, in} & \makecell{Configuración rápida de los parámetros ap, an,\\ tp, tn, re e in. Los valores de dichos parámetros\\ se indican en el orden especificado por \\la lista de canales.}\\      
-      \hline 
-      r0/r1/r2/r3 &  - & \makecell{Lectura de parámetros de los canales 0, 1,\\ 2 o 3. El estimulador devuelve por USART \\los parámetros ap, an, re, tp, tn,\\ re e in del canal especificado.}\\   
+	  fap/fan/ftp/ftn/fre/fin <valores> &  \makecell{valores de ap, an,\\ tp, tn, re, in} & \makecell{Configuración rápida de los parámetros ap, an,\\ tp, tn, re e in. Los valores de dichos parámetros\\ se indican en el orden especificado por \\la lista de canales.}\\      
+      \hline            
+      r 0/r 1/r 2/r 3 &  - & \makecell{Lectura de parámetros de los canales 0, 1,\\ 2 o 3. El estimulador devuelve por USART \\los parámetros ap, an, re, tp, tn,\\ re e in del canal especificado.}\\   
       \hline
       l tg/l ti/l md/l fl/l rm/l lc &  - & \makecell{Lectura de los parámetros tg, ti,\\ md, fl, rm y lc respectivamente.}\\         
       \hline      
@@ -81,6 +98,11 @@ Antes de entrar en la codificación de instrucciones, se va a mostrar la totalid
       \hline                                           
   \end{tabular}\caption{Instrucciones originales del mini TEREFES.}\label{tabla:comandos_originales}
 \end{table}
+
+
+
+
+\section{Revisión y codificación de parámetros devueltos por el estimulador eléctrico}
 
 
 \section{Validación de la configuración óptima del firmware}

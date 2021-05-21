@@ -37,33 +37,34 @@
 \BOOKMARK [2][-]{subsection.3.2.3}{Validaci\363n de objetivos}{section.3.2}% 37
 \BOOKMARK [0][-]{chapter.4}{Optimizaci\363n del firmware de los electroestimuladores}{}% 38
 \BOOKMARK [1][-]{section.4.1}{Revisi\363n del firmware y planteamiento de objetivos de mejora}{chapter.4}% 39
-\BOOKMARK [1][-]{section.4.2}{Codificaci\363n de instrucciones del estimulador el\351ctrico}{chapter.4}% 40
-\BOOKMARK [1][-]{section.4.3}{Validaci\363n de la configuraci\363n \363ptima del firmware}{chapter.4}% 41
-\BOOKMARK [0][-]{chapter.5}{Selecci\363n y programaci\363n del microcontrolador de la pr\363tesis h\355brida}{}% 42
-\BOOKMARK [1][-]{section.5.1}{Selecci\363n del microcontrolador de la pr\363tesis h\355brida}{chapter.5}% 43
-\BOOKMARK [2][-]{subsection.5.1.1}{Requisitos del microcontrolador}{section.5.1}% 44
-\BOOKMARK [2][-]{subsection.5.1.2}{Selecci\363n del microcontrolador}{section.5.1}% 45
-\BOOKMARK [1][-]{section.5.2}{Implementaci\363n de los protocolos de comunicaci\363n}{chapter.5}% 46
-\BOOKMARK [2][-]{subsection.5.2.1}{Protocolo con el exoesqueleto}{section.5.2}% 47
-\BOOKMARK [2][-]{subsection.5.2.2}{Protocolo con la interfaz}{section.5.2}% 48
-\BOOKMARK [2][-]{subsection.5.2.3}{Protocolo con los estimuladores el\351ctricos}{section.5.2}% 49
-\BOOKMARK [3][-]{subsubsection.5.2.3.1}{USART mediante cable}{subsection.5.2.3}% 50
-\BOOKMARK [3][-]{subsubsection.5.2.3.2}{USART mediante Bluetooth y BLE}{subsection.5.2.3}% 51
-\BOOKMARK [3][-]{subsubsection.5.2.3.3}{Pruebas de velocidad y selecci\363n del protocolo}{subsection.5.2.3}% 52
-\BOOKMARK [1][-]{section.5.3}{Programaci\363n del microcontrolador}{chapter.5}% 53
-\BOOKMARK [2][-]{subsection.5.3.1}{Interfaz gr\341fica}{section.5.3}% 54
-\BOOKMARK [2][-]{subsection.5.3.2}{Exoesqueleto rob\363tico}{section.5.3}% 55
-\BOOKMARK [2][-]{subsection.5.3.3}{Estimuladores el\351ctricos}{section.5.3}% 56
-\BOOKMARK [0][-]{chapter.6}{Desarrollo de una interfaz gr\341fica de usuario}{}% 57
-\BOOKMARK [1][-]{section.6.1}{Entorno de desarrollo y herramientas}{chapter.6}% 58
-\BOOKMARK [1][-]{section.6.2}{Integraci\363n de estimuladores}{chapter.6}% 59
-\BOOKMARK [2][-]{subsection.6.2.1}{Sector izquierdo: configuraci\363n de par\341metros}{section.6.2}% 60
-\BOOKMARK [2][-]{subsection.6.2.2}{Sector central: mensajes e im\341genes informativos al usuario}{section.6.2}% 61
-\BOOKMARK [2][-]{subsection.6.2.3}{Sector derecho: modo de operaci\363n y control de estimulaci\363n}{section.6.2}% 62
-\BOOKMARK [1][-]{section.6.3}{Integraci\363n de sensores}{chapter.6}% 63
-\BOOKMARK [1][-]{section.6.4}{Caracter\355sticas especiales}{chapter.6}% 64
-\BOOKMARK [0][-]{chapter.7}{Evaluaci\363n de la pr\363tesis h\355brida}{}% 65
-\BOOKMARK [0][-]{chapter.8}{Resumen, conclusiones y trabajo futuro}{}% 66
-\BOOKMARK [0][-]{section*.64}{Anexos}{}% 67
-\BOOKMARK [0][-]{appendix.Alph1}{Anexo I: Documentaci\363n de la etapa de control}{}% 68
-\BOOKMARK [0][-]{appendix.Alph2}{Anexo II: Documentaci\363n de la etapa de potencia}{}% 69
+\BOOKMARK [1][-]{section.4.2}{Revisi\363n y codificaci\363n de instrucciones recibidas por el estimulador el\351ctrico}{chapter.4}% 40
+\BOOKMARK [1][-]{section.4.3}{Revisi\363n y codificaci\363n de par\341metros devueltos por el estimulador el\351ctrico}{chapter.4}% 41
+\BOOKMARK [1][-]{section.4.4}{Validaci\363n de la configuraci\363n \363ptima del firmware}{chapter.4}% 42
+\BOOKMARK [0][-]{chapter.5}{Selecci\363n y programaci\363n del microcontrolador de la pr\363tesis h\355brida}{}% 43
+\BOOKMARK [1][-]{section.5.1}{Selecci\363n del microcontrolador de la pr\363tesis h\355brida}{chapter.5}% 44
+\BOOKMARK [2][-]{subsection.5.1.1}{Requisitos del microcontrolador}{section.5.1}% 45
+\BOOKMARK [2][-]{subsection.5.1.2}{Selecci\363n del microcontrolador}{section.5.1}% 46
+\BOOKMARK [1][-]{section.5.2}{Implementaci\363n de los protocolos de comunicaci\363n}{chapter.5}% 47
+\BOOKMARK [2][-]{subsection.5.2.1}{Protocolo con el exoesqueleto}{section.5.2}% 48
+\BOOKMARK [2][-]{subsection.5.2.2}{Protocolo con la interfaz}{section.5.2}% 49
+\BOOKMARK [2][-]{subsection.5.2.3}{Protocolo con los estimuladores el\351ctricos}{section.5.2}% 50
+\BOOKMARK [3][-]{subsubsection.5.2.3.1}{USART mediante cable}{subsection.5.2.3}% 51
+\BOOKMARK [3][-]{subsubsection.5.2.3.2}{USART mediante Bluetooth y BLE}{subsection.5.2.3}% 52
+\BOOKMARK [3][-]{subsubsection.5.2.3.3}{Pruebas de velocidad y selecci\363n del protocolo}{subsection.5.2.3}% 53
+\BOOKMARK [1][-]{section.5.3}{Programaci\363n del microcontrolador}{chapter.5}% 54
+\BOOKMARK [2][-]{subsection.5.3.1}{Interfaz gr\341fica}{section.5.3}% 55
+\BOOKMARK [2][-]{subsection.5.3.2}{Exoesqueleto rob\363tico}{section.5.3}% 56
+\BOOKMARK [2][-]{subsection.5.3.3}{Estimuladores el\351ctricos}{section.5.3}% 57
+\BOOKMARK [0][-]{chapter.6}{Desarrollo de una interfaz gr\341fica de usuario}{}% 58
+\BOOKMARK [1][-]{section.6.1}{Entorno de desarrollo y herramientas}{chapter.6}% 59
+\BOOKMARK [1][-]{section.6.2}{Integraci\363n de estimuladores}{chapter.6}% 60
+\BOOKMARK [2][-]{subsection.6.2.1}{Sector izquierdo: configuraci\363n de par\341metros}{section.6.2}% 61
+\BOOKMARK [2][-]{subsection.6.2.2}{Sector central: mensajes e im\341genes informativos al usuario}{section.6.2}% 62
+\BOOKMARK [2][-]{subsection.6.2.3}{Sector derecho: modo de operaci\363n y control de estimulaci\363n}{section.6.2}% 63
+\BOOKMARK [1][-]{section.6.3}{Integraci\363n de sensores}{chapter.6}% 64
+\BOOKMARK [1][-]{section.6.4}{Caracter\355sticas especiales}{chapter.6}% 65
+\BOOKMARK [0][-]{chapter.7}{Evaluaci\363n de la pr\363tesis h\355brida}{}% 66
+\BOOKMARK [0][-]{chapter.8}{Resumen, conclusiones y trabajo futuro}{}% 67
+\BOOKMARK [0][-]{section*.64}{Anexos}{}% 68
+\BOOKMARK [0][-]{appendix.Alph1}{Anexo I: Documentaci\363n de la etapa de control}{}% 69
+\BOOKMARK [0][-]{appendix.Alph2}{Anexo II: Documentaci\363n de la etapa de potencia}{}% 70

@@ -38,8 +38,9 @@
 \contentsline {subsection}{\numberline {3.2.3}Validaci\IeC {\'o}n de objetivos}{47}{subsection.3.2.3}
 \contentsline {chapter}{\numberline {4}Optimizaci\IeC {\'o}n del firmware de los electroestimuladores}{49}{chapter.4}
 \contentsline {section}{\numberline {4.1}Revisi\IeC {\'o}n del firmware y planteamiento de objetivos de mejora}{49}{section.4.1}
-\contentsline {section}{\numberline {4.2}Codificaci\IeC {\'o}n de instrucciones del estimulador el\IeC {\'e}ctrico}{50}{section.4.2}
-\contentsline {section}{\numberline {4.3}Validaci\IeC {\'o}n de la configuraci\IeC {\'o}n \IeC {\'o}ptima del firmware}{51}{section.4.3}
+\contentsline {section}{\numberline {4.2}Revisi\IeC {\'o}n y codificaci\IeC {\'o}n de instrucciones recibidas por el estimulador el\IeC {\'e}ctrico}{51}{section.4.2}
+\contentsline {section}{\numberline {4.3}Revisi\IeC {\'o}n y codificaci\IeC {\'o}n de par\IeC {\'a}metros devueltos por el estimulador el\IeC {\'e}ctrico}{51}{section.4.3}
+\contentsline {section}{\numberline {4.4}Validaci\IeC {\'o}n de la configuraci\IeC {\'o}n \IeC {\'o}ptima del firmware}{51}{section.4.4}
 \contentsline {chapter}{\numberline {5}Selecci\IeC {\'o}n y programaci\IeC {\'o}n del microcontrolador de la pr\IeC {\'o}tesis h\IeC {\'\i }brida}{53}{chapter.5}
 \contentsline {section}{\numberline {5.1}Selecci\IeC {\'o}n del microcontrolador de la pr\IeC {\'o}tesis h\IeC {\'\i }brida}{53}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Requisitos del microcontrolador}{53}{subsection.5.1.1}
